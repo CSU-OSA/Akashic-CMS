@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resources",
+  "info": {
+    "singularName": "resource",
+    "pluralName": "resources",
+    "displayName": "Resource",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "richtext"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "playCount": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "likeCount": {
+      "type": "biginteger"
+    },
+    "collectedCount": {
+      "type": "biginteger"
+    },
+    "viewCount": {
+      "type": "biginteger"
+    },
+    "uploadDate": {
+      "type": "datetime"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "own_resources"
+    }
+  }
+}
