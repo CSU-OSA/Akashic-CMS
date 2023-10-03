@@ -4,7 +4,8 @@ module.exports = ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
-  url: 'https://dev.magicalsheep.cn',
+  // url: 'https://dev.magicalsheep.cn',
+  url: 'http://localhost:1337',
   webhooks: {
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
