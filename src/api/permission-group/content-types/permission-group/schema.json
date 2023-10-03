@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "permission_groups",
+  "info": {
+    "singularName": "permission-group",
+    "pluralName": "permission-groups",
+    "displayName": "permissionGroup"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "resources": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::resource.resource",
+      "private": true,
+      "mappedBy": "permission_group"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "permission_groups"
+    }
+  }
+}

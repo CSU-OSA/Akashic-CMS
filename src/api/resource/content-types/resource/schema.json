@@ -45,11 +45,11 @@
     "uploadDate": {
       "type": "datetime"
     },
-    "users": {
+    "permission_group": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "plugin::users-permissions.user",
-      "mappedBy": "own_resources"
+      "relation": "manyToOne",
+      "target": "api::permission-group.permission-group",
+      "inversedBy": "resources"
     }
   }
 }
