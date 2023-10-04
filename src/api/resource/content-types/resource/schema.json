@@ -45,11 +45,28 @@
     "uploadDate": {
       "type": "datetime"
     },
-    "permission_group": {
+    "readable_users": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::permission-group.permission-group",
-      "inversedBy": "resources"
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "readable_resources"
+    },
+    "owners": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "own_resources"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "censoring",
+        "published",
+        "blocked"
+      ],
+      "private": true,
+      "default": "censoring",
+      "required": true
     }
   }
 }

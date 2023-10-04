@@ -69,12 +69,17 @@
       "type": "biginteger",
       "required": true
     },
-    "permission_groups": {
+    "own_resources": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::permission-group.permission-group",
-      "private": true,
-      "mappedBy": "users"
+      "target": "api::resource.resource",
+      "mappedBy": "owners"
+    },
+    "readable_resources": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::resource.resource",
+      "mappedBy": "readable_users"
     }
   }
 }
