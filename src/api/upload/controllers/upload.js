@@ -5,11 +5,9 @@
  */
 
 module.exports = {
-  // exampleAction: async (ctx, next) => {
-  //   try {
-  //     ctx.body = 'ok';
-  //   } catch (err) {
-  //     ctx.body = err;
-  //   }
-  // }
+  async upload(ctx){
+    ctx.query = { ...ctx.query }
+    const {data} = await super.upload(ctx);
+    return {data};
+  }
 };
