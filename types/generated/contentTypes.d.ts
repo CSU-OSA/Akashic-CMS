@@ -376,7 +376,6 @@ export interface ApiResourceResource extends Schema.CollectionType {
     description: Attribute.RichText;
     media: Attribute.Media & Attribute.Required;
     name: Attribute.String;
-    playCount: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
     likeCount: Attribute.BigInteger;
     collectedCount: Attribute.BigInteger;
     viewCount: Attribute.BigInteger;

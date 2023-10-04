@@ -29,10 +29,6 @@
     "name": {
       "type": "string"
     },
-    "playCount": {
-      "type": "biginteger",
-      "default": "0"
-    },
     "likeCount": {
       "type": "biginteger"
     },
