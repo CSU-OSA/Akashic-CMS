@@ -65,10 +65,6 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "stuId": {
-      "type": "biginteger",
-      "required": true
-    },
     "own_resources": {
       "type": "relation",
       "relation": "manyToMany",
@@ -80,6 +76,16 @@
       "relation": "manyToMany",
       "target": "api::resource.resource",
       "mappedBy": "readable_users"
+    },
+    "stuId": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "balance": {
+      "type": "biginteger",
+      "default": "0",
+      "private": true
     }
   }
 }

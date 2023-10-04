@@ -666,7 +666,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    stuId: Attribute.BigInteger & Attribute.Required;
     own_resources: Attribute.Relation<
       'plugin::users-permissions.user',
       'manyToMany',
@@ -677,6 +676,10 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToMany',
       'api::resource.resource'
     >;
+    stuId: Attribute.String & Attribute.Required & Attribute.Unique;
+    balance: Attribute.BigInteger &
+      Attribute.Private &
+      Attribute.DefaultTo<'0'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
