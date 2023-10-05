@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "report_applications",
+  "info": {
+    "singularName": "report-application",
+    "pluralName": "report-applications",
+    "displayName": "ReportApplication"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "resource": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::resource.resource",
+      "inversedBy": "report_application"
+    },
+    "reason": {
+      "type": "richtext",
+      "required": true
+    },
+    "reporter": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "report_application"
+    }
+  }
+}

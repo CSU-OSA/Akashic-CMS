@@ -1,0 +1,5 @@
+/**
+ * trade service
+ */
+
+export default () => ({});

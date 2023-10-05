@@ -1,0 +1,19 @@
+<form>
+  <!-- Can be multiple files -->
+  <input type="file" name="files" />
+  <input type="submit" value="Submit" />
+</form>
+
+<script type="text/javascript">
+  const form = document.querySelector('form');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    await fetch('http://localhost:1337/api/upload', {
+      method: 'post',
+      body: new FormData(e.target),
+      credentials:"omit"
+    });
+  });
+</script>

@@ -361,6 +361,47 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiReportApplicationReportApplication
+  extends Schema.CollectionType {
+  collectionName: 'report_applications';
+  info: {
+    singularName: 'report-application';
+    pluralName: 'report-applications';
+    displayName: 'ReportApplication';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    resource: Attribute.Relation<
+      'api::report-application.report-application',
+      'oneToOne',
+      'api::resource.resource'
+    >;
+    reason: Attribute.RichText & Attribute.Required;
+    reporter: Attribute.Relation<
+      'api::report-application.report-application',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::report-application.report-application',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::report-application.report-application',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiResourceResource extends Schema.CollectionType {
   collectionName: 'resources';
   info: {
@@ -374,7 +415,6 @@ export interface ApiResourceResource extends Schema.CollectionType {
   };
   attributes: {
     description: Attribute.RichText;
-    media: Attribute.Media & Attribute.Required;
     name: Attribute.String;
     likeCount: Attribute.BigInteger;
     collectedCount: Attribute.BigInteger;
@@ -394,6 +434,12 @@ export interface ApiResourceResource extends Schema.CollectionType {
       Attribute.Required &
       Attribute.Private &
       Attribute.DefaultTo<'censoring'>;
+    media: Attribute.Media & Attribute.Required;
+    report_application: Attribute.Relation<
+      'api::resource.resource',
+      'oneToOne',
+      'api::report-application.report-application'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -679,6 +725,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     balance: Attribute.BigInteger &
       Attribute.Private &
       Attribute.DefaultTo<'0'>;
+    report_application: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::report-application.report-application'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -750,6 +801,7 @@ declare module '@strapi/strapi' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::report-application.report-application': ApiReportApplicationReportApplication;
       'api::resource.resource': ApiResourceResource;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
